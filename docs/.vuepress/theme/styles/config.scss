@@ -1,0 +1,9 @@
+$themeColor: #46bd87;
+$hoverColor: rgb(62,175,124);
+$hoverBackgroundColor: rgba(62,175,124,0.2);
+$containerWidth: 800px;
+
+
+@mixin transition($property, $duration) {
+  transition: $property $duration cubic-bezier(.4,0,.2,1);
+}

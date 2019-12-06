@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vuepress入门 | newway_blog</title>
+    <meta name="description" content="vuepress入门">
+    
+    <meta name="keywords" content="js,vuepress">
+    <link rel="preload" href="/test_1/assets/css/styles.2f242e28.css" as="style"><link rel="preload" href="/test_1/assets/js/app.2f242e28.js" as="script"><link rel="preload" href="/test_1/assets/js/2.7094d0e3.js" as="script"><link rel="prefetch" href="/test_1/assets/css/1.styles.9725d984.css"><link rel="prefetch" href="/test_1/assets/css/3.styles.5977db50.css"><link rel="prefetch" href="/test_1/assets/js/1.9725d984.js"><link rel="prefetch" href="/test_1/assets/js/3.5977db50.js"><link rel="prefetch" href="/test_1/assets/js/4.f22c1ac6.js"><link rel="prefetch" href="/test_1/assets/js/5.d88ed433.js"><link rel="prefetch" href="/test_1/assets/js/6.4bb28d66.js">
+    <link rel="stylesheet" href="/test_1/assets/css/styles.2f242e28.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="container"><div class="global-menu menu-inner" style="display:none;"><div class="inner" style="display:none;"><div class="intro"><p class="name">newway</p> <p class="professionn">前端开发</p></div> <div class="stack"><span>技术栈</span> <p>熟悉的语言 JavaScript ES6 </p> <p>熟悉的JS框架 jQuery</p> <p>熟悉的打包框架 webpack</p> <p>熟悉的MVVM框架 Vue React</p> <p>熟悉的css预处理器 less scss stylus </p> <p>熟悉的版本控制工具 git</p></div></div></div> <header data-v-15d5e4bb><nav data-v-15d5e4bb><div class="main" data-v-15d5e4bb><ul class="nav" data-v-15d5e4bb><li class="is-hamburger-menu" data-v-15d5e4bb><a href="javascript:void(0);" class="hamburger-menu" data-v-15d5e4bb><div class="inner" data-v-15d5e4bb><div class="bar" data-v-15d5e4bb></div></div></a></li> <li data-v-15d5e4bb><a href="/test_1/" class="router-link-active" data-v-15d5e4bb>Blog</a></li><li data-v-15d5e4bb><a href="/test_1/guide/" data-v-15d5e4bb>guide</a></li><li data-v-15d5e4bb><a href="/test_1/config/" data-v-15d5e4bb>Config</a></li></ul></div> <div class="links" data-v-15d5e4bb><ul class="links-nav"><li class="links-item is-search-box"><div class="search-box"><input aria-label="Search" type="text" value=""> <!----></div></li> <li class="links-item"><a target="_blank" href="https://blog.csdn.net/newway007">csdn</a></li> <li class="links-item"><a target="_blank" href="https://github.com/newway7">github</a></li></ul></div></nav></header> <!----> <div class="page-container"><div class="content custom"><h1 id="vuepress从零开始搭建博客"><a href="#vuepress从零开始搭建博客" class="header-anchor">#</a> VuePress从零开始搭建博客</h1> <p>花了2天多的时间总算搭出一个博客的雏形了。
+搭建的博客没有使用官方提供的<strong>主题</strong>，而是自己创建了一个主题。所以，在样式上，有自己的风格和特点。</p> <p>转入正题。</p> <h2 id="环境搭建"><a href="#环境搭建" class="header-anchor">#</a> 环境搭建</h2> <p>安装VuePress</p> <div class="language- extra-class"><pre class="language-text"><code>yarn global add vuepress 
+或者：npm install -g vuepress
+也可以直接下载我的代码。然后cnpm i 下载依赖
+</code></pre></div><p><strong>注</strong>：个人建议，更推荐使用 npm或者cnpm安装vuepress，我尝试过使用yarn，但是安装过程中经常会报错error。也可以本地安装，看你个人偏好。</p> <h2 id="配置"><a href="#配置" class="header-anchor">#</a> 配置</h2> <p>以下是我的文件夹的目录：
+docs文件夹下面有：</p> <ul><li>.vuepress</li> <li>blog</li> <li>config</li> <li>guide</li> <li>README.md</li></ul> <p>这几个文件或者文件夹。</p> <p><img src="/test_1/assets/img/intro.ee9b0c1e.png" alt="目录"></p> <p>.vuepress是静态网站的生成器。你写的md文档都要通过它来表现出来。</p> <h2 id="自定义主题"><a href="#自定义主题" class="header-anchor">#</a> 自定义主题</h2> <p><strong>theme</strong>是一个自定义的主题。里面包含了你的网站的样式，图片和vue组件等等。</p> <p>主要讲一讲components文件夹里面的组件。</p> <p>components中的组件最终都被Layout.vue引用。（默认使用Layout.vue作为vuepress的主入口。）
+首页页面显示如图所示：
+<img src="/test_1/assets/img/page.29b3ed3e.png" style="width:700px;height:300px"></p> <p>具体详情请查看代码。</p> <p><strong>config.js</strong>是你的配置文件。一个config.js的主要配置包括网站的标题、描述、导航栏的设置等基本信息，以及主题的配置。</p> <p>以我的config为例：</p> <div class="language- extra-class"><pre class="language-text"><code>module.exports = {
+  title:'newway_blog',//网站的titile
+  base: '/',//基本路径
+  themeConfig: {
+    nav: [
+      { 
+        text: 'Blog', 
+        link: '/' ,
+      },//导航栏配置，此配置主要用于配置导航栏的链接
+
+      {
+        text: 'guide',
+        link: '/guide/',//这是路由，点击guide默认显示guide/README.md中的内容
+      },
+      {
+        text: 'Config',
+        link: '/config/'
+      },
+    ]
+    
+  },
+  chainWebpack: (config) =&gt; {//webpack的配置；
+    config.module.rule('js')
+      .exclude.add(/(docs\/.vuepress\/theme\/icon\/*.js)/).end()
+  },
+
+}
+</code></pre></div><p><strong>踩过的一个坑</strong>：每次修改config.js都要重启一下服务器，不然，会报错。</p> <p>如果你想要一个更加炫酷的多功能的blog，可以选择安装主题。</p> <p>如果想看一下你blog的效果，
+可以在package.json中配置：</p> <div class="language- extra-class"><pre class="language-text"><code>  &quot;scripts&quot;: {
+    &quot;start&quot;: &quot;vuepress dev docs&quot;,
+    &quot;build&quot;: &quot;vuepress build docs&quot;
+  },
+</code></pre></div></div></div></div></div>
+    <script src="/test_1/assets/js/app.2f242e28.js" defer></script><script src="/test_1/assets/js/2.7094d0e3.js" defer></script>
+  </body>
+</html>
